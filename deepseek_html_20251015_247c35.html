@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XPay - USDT Payment Gateway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-coins"></i>
+                <span>XPay</span>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">R</div>
+                <div>
+                    <div style="font-weight: 500;">Raj Kumar</div>
+                    <div style="font-size: 0.8rem; color: var(--gray);">Panel Activation</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Payment Form -->
+            <div class="payment-card">
+                <div class="payment-header">
+                    <h2>USDT Payment Gateway</h2>
+                    <p>Complete your payment for panel activation</p>
+                </div>
+
+                <div class="amount-section">
+                    <div class="original-price">350.00 USDT</div>
+                    <div class="amount">350.00 <span class="currency">USDT</span></div>
+                    <div class="discount-badge" id="discount-badge" style="display: none;">Discount Applied!</div>
+                    <p>Total amount to be paid</p>
+                </div>
+
+                <div class="coupon-section">
+                    <input type="text" class="coupon-input" id="coupon-input" placeholder="Enter coupon code">
+                    <button class="coupon-btn" id="apply-coupon">Apply</button>
+                </div>
+                <div id="coupon-message"></div>
+
+                <div class="payment-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Customer Name</div>
+                        <div class="detail-value">Raj Kumar</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment ID</div>
+                        <div class="detail-value">XP987654321</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment Purpose</div>
+                        <div class="detail-value">Panel Activation</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Due Date</div>
+                        <div class="detail-value">15 Dec, 2023</div>
+                    </div>
+                </div>
+
+                <div class="payment-method">
+                    <div class="method-icon">
+                        <i class="fab fa-usdt"></i>
+                    </div>
+                    <div class="method-info">
+                        <h3>USDT (TRC20)</h3>
+                        <p>Send exactly 350.00 USDT via TRC20 network</p>
+                    </div>
+                </div>
+
+                <button class="btn" id="proceed-btn">
+                    <i class="fas fa-lock"></i> Secure Payment
+                </button>
+            </div>
+
+            <!-- Payment Status -->
+            <div class="status-card">
+                <div class="status-header">
+                    <div class="status-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="status-details">
+                        <h3>Payment Status</h3>
+                        <p>Track your payment progress</p>
+                    </div>
+                </div>
+
+                <div class="status-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon completed">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Order Placed</h4>
+                            <p>Your payment request has been received</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon completed">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Payment Initiated</h4>
+                            <p>Awaiting your USDT transfer</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Transaction Verification</h4>
+                            <p>We're verifying your payment on the blockchain</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Panel Activation</h4>
+                            <p>Your panel will be activated after confirmation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="verification-status verification-pending">
+                    <i class="fas fa-clock"></i> Transaction Verification Pending
+                </div>
+
+                <div class="qr-section">
+                    <h3>Scan to Pay with USDT</h3>
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TMZsmxZhxJJjJE9cytC4Yvtj4emo5Ybtpk&bgcolor=1e293b&color=2563eb" alt="QR Code">
+                    </div>
+                    <p>Send exactly <span id="qr-amount">350.00</span> USDT to the address below</p>
+                </div>
+
+                <div class="wallet-address">
+                    TMZsmxZhxJJjJE9cytC4Yvtj4emo5Ybtpk
+                    <br>
+                    <button class="copy-btn" id="copy-address">
+                        <i class="fas fa-copy"></i> Copy Address
+                    </button>
+                    <a href="https://tronscan.org/#/address/TMZsmxZhxJJjJE9cytC4Yvtj4emo5Ybtpk" target="_blank" class="tron-scan-link">
+                        <i class="fas fa-external-link-alt"></i> View on TronScan
+                    </a>
+                </div>
+
+                <div class="verification-steps">
+                    <h4>To Verify Payment:</h4>
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div>Send exact amount to the wallet address above</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div>Copy your Transaction ID (TXID) from your wallet</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div>Paste TXID below and click Verify</div>
+                    </div>
+                </div>
+
+                <input type="text" class="transaction-input" id="transaction-id" placeholder="Paste your Transaction ID (TXID) here">
+                
+                <button class="btn btn-success" id="verify-btn">
+                    <i class="fas fa-check-circle"></i> Verify Transaction
+                </button>
+
+                <div id="verification-result"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <a href="#">Support</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 XPay. All rights reserved. Secure USDT Payment Gateway
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
